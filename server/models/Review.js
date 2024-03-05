@@ -11,12 +11,23 @@ const reviewSchema = new Schema({
         type: String,
         required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
+    legoSet: {
+        type: String,
+        required: true,
     },
-    });
+    reviewScore: {
+        type: Number,
+        min: 1,
+        max: 5,
+        required: true,
+    }
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now,
+    //     get: (timestamp) => dateFormat(timestamp),
+    // },
+    })
+    reviewSchema.set('timestamps', true)
 
 const Review = model('Review', reviewSchema);
 
