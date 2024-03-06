@@ -8,8 +8,9 @@ const reviewSchema = new Schema({
         maxlength: 280,
     },
     reviewAuthor: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
+        ref: 'User',
     },
     legoSet: {
         type: String,
