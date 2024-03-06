@@ -17,7 +17,7 @@ type Review {
     _id: ID!
     reviewText: String!
     reviewAuthor: String!
-    # createdAt: String!
+    createdAt: String!
     updatedAt: String!
     legoSet: String!
     reviewScore: Int!

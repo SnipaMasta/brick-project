@@ -48,6 +48,22 @@ Mutation: {
     const token = signToken(user);
     return { token, user };
   },
+  addReview: async (parent, {legoSet, reviewText, reviewScore, reviewAuthor}, context) => {
+    console.log(context);
+    
+    if (context.user) {
+      const review = await Review.create({legoSet, reviewText, reviewScore, reviewAuthor: context.user._id});
+      await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $push: { reviews: review._id } },
+        { new: true }
+      );
+      return review;
+    }
+    throw AuthenticationError;
+  },
+
+
 
 },
 
