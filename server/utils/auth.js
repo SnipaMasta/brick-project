@@ -10,12 +10,9 @@ module.exports = {
       code: 'UNAUTHENTICATED',
     },
   }),
-  authMiddleware: function ( req ) {
-    console.log("hello auth middleware");
+  authMiddleware: function ( {req} ) {
     // allows token to be sent via req.body, req.query, or headers
-    // console.log(req.body);
-    let token = req.body.token || req.query.token || req.headers.authorization;
-    console.log(token);
+    let token = req.headers.authorization;
     // We split the token string into an array and return actual token
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
