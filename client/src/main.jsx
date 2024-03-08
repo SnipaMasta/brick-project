@@ -2,6 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
+// import Featured from './pages/Featured';
 
 const router = createBrowserRouter([
   {
@@ -14,24 +20,26 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/Login',
+        path: '/login',
         element: <Login />,
       },
+      {
+        path: '/signup',
+        element: <Signup />,
+      },
+      {
+        path: '/profiles/:profileId',
+        element: <Profile />,
+      },
       // {
-      //   path: '/Blog',
-      //   element: <Blog />,
-      // },
-      // {
-      //   path: '/Contact',
-      //   element: <Contact />,
-      // },
+      //   path: '/featured',
+      //   element: <Featured />,
+      // }
     ],
   },
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <RouterProvider router={router} />
 )
