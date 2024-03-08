@@ -17,7 +17,8 @@ const resolvers = {
       const response = await fetch(requestUrl)
       const data = await response.json()
       console.log(data);
-      return await Review.find({});
+      const reviews = await Review.find({});
+      return {data, reviews};
     }
   },
 
